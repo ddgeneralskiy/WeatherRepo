@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TestWeather:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TestWeather_jar</output-path>
+    <root id="archive" name="TestWeather.jar">
+      <element id="module-output" name="TestWeather" />
+      <element id="module-test-output" name="TestWeather" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20180813/json-20180813.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/testng/testng/6.14.3/testng-6.14.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
