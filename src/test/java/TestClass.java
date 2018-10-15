@@ -1,6 +1,4 @@
-import org.json.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Date;
@@ -9,35 +7,36 @@ public class TestClass extends Assert {
 
 
 
-    @BeforeClass
-    public void setUp (){
-        WeatherTest wt = new WeatherTest();
+    @Test
+    public void isCorrectDate () {
         try {
-            wt.sendGet(WeatherTest.getUrlYandex());
+            String date = WeatherTest.sendGet(WeatherTest.getUrlYandex()).getString("now_dt").replace("T", " ");
+            Date current_date = new Date();
+            String cd = current_date.toString();
+
+
+            assertEquals(cd, date);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    @Test
-    public void isCorrectDate (JSONObject jsonObject) {
-        Date current_date = new Date();
-        String cd = current_date.toString();
-        String date = jsonObject.getString("now_dt").replace("T", " ");
-
-        assertEquals(cd, date);
 
     }
 
     @Test
-    public void isTemp (JSONObject jsonObject) {
-        int TEMP = jsonObject.getJSONObject("fact").getInt("temp");
-        assertEquals(TEMP, 9);
+    public void isTemp () {
+        int TEMP = 0;
+        try {
+            TEMP = WeatherTest.sendGet(WeatherTest.getUrlYandex()).getJSONObject("fact").getInt("temp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertEquals(TEMP, 7);
     }
 
     @Test
-    public  void isPressure (JSONObject jsonObject) {
-        int pressure = jsonObject.getJSONObject("fact").getInt("pressure_mm");
+    public  void isPressure () throws Exception {
+        int pressure = WeatherTest.sendGet(WeatherTest.getUrlYandex()).getJSONObject("fact").getInt("pressure_mm");
         assertEquals(pressure,756);
 
     }
